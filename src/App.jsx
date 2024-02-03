@@ -3,7 +3,7 @@ import "./App.css";
 
 // components
 import Home from "./ui/Home";
-import Menu from "./features/menu/Menu";
+import Menu, { loader as menuLoader } from "./features/menu/Menu";
 import Cart from "./features/cart/Cart";
 import CreateOrder from "./features/orders/CreateOrder";
 import Order from "./features/orders/Order";
@@ -20,6 +20,7 @@ const router = createBrowserRouter([
       {
         path: "/menu",
         element: <Menu />,
+        loader: menuLoader, // menu loader react router new feature -> it fetches and render at the same time, better to use instead of useeffect
       },
       {
         path: "/cart",

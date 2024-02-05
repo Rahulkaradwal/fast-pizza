@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 function CartOverview() {
   return (
     <div
-      className="-mt-6  flex h-10
-    items-center justify-between bg-cyan-900 p-8 text-white"
+      className="-mt-5  flex h-10
+    items-center justify-between  bg-cyan-900 p-8 text-white"
     >
       <p className="space-x-5">
         <span>23 pizzas</span>

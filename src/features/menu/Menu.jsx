@@ -7,7 +7,7 @@ function Menu() {
   console.log(menu);
 
   return (
-    <ul>
+    <ul className="grid grid-cols-4 gap-x-1 ">
       {menu.map((pizza) => (
         <MenuItem pizza={pizza} key={pizza.id} />
       ))}

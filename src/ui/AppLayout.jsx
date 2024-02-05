@@ -10,7 +10,7 @@ function AppLayout() {
     <div className="h-screen  overflow-hidden  bg-stone-300  text-lg">
       {isLoading && <Loader />}
       <Header />
-      <main className="h-5/6">
+      <main className="mb-1 h-5/6 overflow-scroll">
         <Outlet />
       </main>
       <CartOverview />

@@ -7,6 +7,7 @@ import {
   formatCurrency,
   formatDate,
 } from "../../utils/helpers";
+import OrderItem from "./OrderItem";
 
 function Order() {
   const order = useLoaderData();
@@ -20,19 +21,26 @@ function Order() {
     cart,
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
+  console.log(cart);
 
   return (
-    <div>
-      <div>
-        <h2>Status</h2>
+    <div className=" m-4   ">
+      <div className="mb-4 flex justify-between gap-x-4">
+        <h2 className=" text-2xl font-bold">Order #{id} status</h2>
 
-        <div>
-          {priority && <span>Priority</span>}
-          <span>{status} order</span>
+        <div className="flex  ">
+          {priority && (
+            <span className="mr-4 rounded-md bg-red-600 px-2 py-1 font-semibold uppercase text-white">
+              Priority
+            </span>
+          )}
+          <span className="flex rounded-md bg-green-600 px-2 py-1 font-semibold uppercase text-white">
+            {status} order
+          </span>
         </div>
       </div>
 
-      <div>
+      <div className=" mb-4 flex justify-between rounded-md bg-zinc-400 p-6 text-xl">
         <p>
           {deliveryIn >= 0
             ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
@@ -41,7 +49,13 @@ function Order() {
         <p>(Estimated delivery: {formatDate(estimatedDelivery)})</p>
       </div>
 
-      <div>
+      <ul className="dive-stone-200 h-68 divide-y  border border-y">
+        {cart.map((item) => (
+          <OrderItem key={item.id} item={item} />
+        ))}
+      </ul>
+
+      <div className="mt-16 flex justify-between rounded-md bg-zinc-400 p-6 text-xl">
         <p>Price pizza: {formatCurrency(orderPrice)}</p>
         {priority && <p>Price priority: {formatCurrency(priorityPrice)}</p>}
         <p>To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}</p>

@@ -4,7 +4,10 @@
 
 @layer components {
   .input {
-    @apply rounded-md p-1 text-base text-black focus:w-80;
+    @apply rounded-md p-1 text-base text-black focus:w-80 focus:transition-all focus:duration-1000;
+  }
+  .inputForm {
+    @apply rounded-md p-1 text-base text-black;
   }
 }
 

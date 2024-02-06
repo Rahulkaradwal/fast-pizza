@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 function LinkButton({ children, to }) {
   const navigate = useNavigate();
   const classes =
-    "m-5 rounded-md  p-2 text-base  bg-cyan-900 text-white transition-all duration-300 hover:scale-105 hover:cursor-pointer";
+    "m-5 rounded-md   p-2 text-base  bg-cyan-900 text-white transition-all duration-300 hover:scale-105 hover:cursor-pointer";
 
   if (to === "-1")
     return (

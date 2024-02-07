@@ -15,7 +15,7 @@ function Home() {
         {username === "" ? (
           <CreateUser />
         ) : (
-          <LinkButton to="/menu">Continue Ordering {username}</LinkButton>
+          <LinkButton to="/menu">Continue Ordering, {username}</LinkButton>
         )}
       </div>
     </div>

@@ -1,7 +1,9 @@
 import { useDispatch } from "react-redux";
+
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utils/helpers";
 import { removeFromCart } from "./cartSlice";
+import UpdateQuantity from "./updateQuantity";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -19,6 +21,7 @@ function CartItem({ item }) {
 
         <p>{formatCurrency(totalPrice)}</p>
       </div>
+      <UpdateQuantity pizzaId={pizzaId} />
       <Button onClick={() => handleClick(pizzaId)}>Remove</Button>
     </li>
   );

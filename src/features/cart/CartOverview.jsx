@@ -11,10 +11,14 @@ function CartOverview() {
       className="-mt-5  flex h-10
     items-center justify-between  overflow-hidden bg-cyan-900 p-8 text-white"
     >
-      <p className="space-x-5">
-        <span>{totalQuantity} pizzas</span>
-        <span>${totalPrice}</span>
-      </p>
+      {totalPrice && totalQuantity ? (
+        <p className="space-x-5">
+          <span>{totalQuantity} pizzas</span>
+          <span>${totalPrice}</span>
+        </p>
+      ) : (
+        ""
+      )}
       <Link to="/cart">Open cart &rarr;</Link>
     </div>
   );

@@ -10,7 +10,6 @@ const cartSlice = createSlice({
   reducers: {
     addToCart(state, action) {
       state.cart.push(action.payload);
-      console.log(state);
     },
     removeFromCart(state, action) {
       state.cart = state.cart.filter((item) => item.pizzaId !== action.payload);
@@ -31,8 +30,13 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart, increaseQuantity, decreaseQuantity } =
-  cartSlice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;
 

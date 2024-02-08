@@ -1,6 +1,6 @@
 function Button({ children, disabled, onClick }) {
   const classes =
-    "m-5 rounded-md bg-cyan-900  p-2 text-base  text-white transition-all duration-300 hover:scale-105 hover:cursor-pointer";
+    "m-5 rounded-md bg-cyan-900  p-2 text-base  text-white transition-all duration-300 hover:scale-105  ";
 
   if (onClick)
     return (
@@ -10,7 +10,10 @@ function Button({ children, disabled, onClick }) {
     );
 
   return (
-    <button disabled={disabled} className={classes}>
+    <button
+      disabled={disabled}
+      className={`${classes} ${disabled ? "cursor-not-allowed" : ""}`}
+    >
       {children}
     </button>
   );

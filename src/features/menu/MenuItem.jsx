@@ -36,9 +36,11 @@ function MenuItem({ pizza }) {
           </div>
         </div>
 
-        <Button disabled={soldOut} onClick={handleClick}>
-          {soldOut ? "Sold Out" : "Add To Cart"}
-        </Button>
+        {soldOut ? (
+          <Button disabled={soldOut}>Sold Out</Button>
+        ) : (
+          <Button onClick={handleClick}>Add to Cart</Button>
+        )}
       </div>
     </li>
   );

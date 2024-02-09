@@ -1,19 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Button from "../../ui/Button";
-import {
-  decreaseQuantity,
-  getTotalQuantity,
-  increaseQuantity,
-} from "./cartSlice";
+import { decreaseQuantity, increaseQuantity } from "./cartSlice";
 
-function UpdateQuantity({ pizzaId }) {
+function UpdateQuantity({ pizzaId, currentQuantity }) {
   const dispatch = useDispatch();
-  const totalQuantity = useSelector(getTotalQuantity);
 
   return (
     <div>
       <Button onClick={() => dispatch(increaseQuantity(pizzaId))}>+</Button>
-      <span>{totalQuantity}</span>
+      <span>{currentQuantity}</span>
       <Button onClick={() => dispatch(decreaseQuantity(pizzaId))}>-</Button>
     </div>
   );

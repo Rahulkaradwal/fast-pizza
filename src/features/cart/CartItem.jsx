@@ -1,8 +1,8 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utils/helpers";
-import { removeFromCart } from "./cartSlice";
+import { getCurrentQuantity, removeFromCart } from "./cartSlice";
 import UpdateQuantity from "./updateQuantity";
 
 function CartItem({ item }) {
@@ -12,6 +12,8 @@ function CartItem({ item }) {
   const handleClick = (id) => {
     dispatch(removeFromCart(id));
   };
+
+  const currentQuantity = useSelector(getCurrentQuantity(pizzaId));
   return (
     <li className="flex items-center justify-between">
       <div className="flex">
@@ -21,7 +23,7 @@ function CartItem({ item }) {
 
         <p>{formatCurrency(totalPrice)}</p>
       </div>
-      <UpdateQuantity pizzaId={pizzaId} />
+      <UpdateQuantity pizzaId={pizzaId} currentQuantity={currentQuantity} />
       <Button onClick={() => handleClick(pizzaId)}>Remove</Button>
     </li>
   );

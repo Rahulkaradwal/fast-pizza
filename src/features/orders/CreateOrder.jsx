@@ -9,40 +9,17 @@ const isValidPhone = (str) =>
     str,
   );
 
-const fakeCart = [
-  {
-    pizzaId: 12,
-    name: "Mediterranean",
-    quantity: 2,
-    unitPrice: 16,
-    totalPrice: 32,
-  },
-  {
-    pizzaId: 6,
-    name: "Vegetale",
-    quantity: 1,
-    unitPrice: 13,
-    totalPrice: 13,
-  },
-  {
-    pizzaId: 11,
-    name: "Spinach and Mushroom",
-    quantity: 1,
-    unitPrice: 15,
-    totalPrice: 15,
-  },
-];
-
 function CreateOrder() {
   const { username } = useSelector((store) => store.user);
   const navigation = useNavigation();
 
   const isSubmitting = (navigation.state = "submitting");
+  console.log(isSubmitting);
 
   const formErrors = useActionData();
+  const cart = useSelector((state) => state.cart.cart);
 
   // const [withPriority, setWithPriority] = useState(false);
-  const cart = fakeCart;
 
   return (
     <div className="flex justify-center p-8 text-center ">
@@ -93,8 +70,8 @@ function CreateOrder() {
           <div>
             <input type="hidden" name="cart" value={JSON.stringify(cart)} />
 
-            <Button disabled={isSubmitting}>
-              {isSubmitting ? "Placing Order" : "Order Now"}{" "}
+            <Button disabled={!isSubmitting}>
+              {isSubmitting ? "Placing Order" : "Order Now"}
             </Button>
           </div>
         </Form>
@@ -112,6 +89,7 @@ export async function action({ request }) {
     cart: JSON.parse(data.cart),
     priority: data.priority === "on",
   };
+  console.log(order);
 
   const errors = {};
 

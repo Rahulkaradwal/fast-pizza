@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "../../ui/Button";
 import { formatCurrency } from "../../utils/helpers";
 import { addToCart, removeFromCart } from "../cart/cartSlice";
+import UpdateQuantity from "../cart/UpdateQuantity";
 
 function MenuItem({ pizza }) {
   const dispatch = useDispatch();
@@ -51,7 +52,10 @@ function MenuItem({ pizza }) {
             {!isInCart ? (
               <Button onClick={handleClick}>Add to Cart</Button>
             ) : (
-              <Button onClick={() => handleRemove(id)}>Remove</Button>
+              <div className="flex">
+                <Button onClick={() => handleRemove(id)}>Remove</Button>
+                <UpdateQuantity pizzaId={id} />
+              </div>
             )}
           </>
         )}

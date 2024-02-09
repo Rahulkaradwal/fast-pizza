@@ -21,6 +21,11 @@ function MenuItem({ pizza }) {
     dispatch(addToCart(newItem));
   };
 
+  const isInCart = useSelector((state) =>
+    state.cart.cart.some((item) => item.pizzaId === id),
+  );
+  console.log(isInCart);
+
   return (
     <li className="border-1 m-2  flex flex-col  gap-2 border p-6 text-lg text-gray-700">
       <img
@@ -40,7 +45,9 @@ function MenuItem({ pizza }) {
         {soldOut ? (
           <Button disabled={soldOut}>Sold Out</Button>
         ) : (
-          <Button onClick={handleClick}>Add to Cart</Button>
+          <Button onClick={handleClick}>
+            {isInCart ? "Remove from Cart" : "Add to Cart"}
+          </Button>
         )}
       </div>
     </li>
